@@ -10,7 +10,7 @@
 <!--JQUERY-->
 <script type="text/javascript" src="../../3DHOP_4.1/minimal/js/jquery.js"></script>
 <!--PRESENTER-->
-<script type="text/javascript" src="./js/presenter.js"></script>
+<script type="text/javascript" src="./js/presenterCVAST.js"></script> <!-- customized version of presenter.js -->
 <!--3D MODELS LOADING AND RENDERING-->
 <script type="text/javascript" src="../../3DHOP_4.1/minimal/js/nexus.js"></script>
 <script type="text/javascript" src="../../3DHOP_4.1/minimal/js/ply.js"></script>
@@ -20,7 +20,7 @@
 <script type="text/javascript" src="../../3DHOP_4.1/minimal/js/trackball_turntable_pan.js"></script>
 <script type="text/javascript" src="../../3DHOP_4.1/minimal/js/trackball_pantilt.js"></script>
 <!--UTILITY-->
-<script type="text/javascript" src="../../3DHOP_4.1/minimal/js/init.js"></script>
+<script type="text/javascript" src="./js/initCVAST.js"></script> <!-- customized version of init.js -->
 
 <!--Removable-->
 <!--CVAST-->
@@ -36,13 +36,14 @@
   <img id="zoomout"    title="Zoom Out"              src="skins/dark/zoomout.png"/><br/>
   <img id="light_on"   title="Disable Light Control" src="skins/dark/light_on.png" style="position:absolute; visibility:hidden;"/>
   <img id="light"      title="Enable Light Control"  src="skins/dark/light.png"/><br/>
-  <img id="ann_on"    title="Disable Annotation Mode" src="skins/CUSTOM/annote_on.png" style="position:absolute; visibility:hidden;"/>
-  <img id="ann"       title="Enable Annotation Mode" src="skins/CUSTOM/annote.png"/><br/>
+  <img id="ann_on"    title="Disable Annotation Mode" src="skins/CUSTOM/annote_on.png" style="position:absolute; visibility:hidden;"/> <!-- CVAST -->
+  <img id="ann"       title="Enable Annotation Mode" src="skins/CUSTOM/annote.png"/><br/> <!-- CVAST -->
   <img id="pick_on"    title="Disable PickPoint Mode"src="skins/dark/pick_on.png" style="position:absolute; visibility:hidden;"/>
   <img id="pick"       title="Enable PickPoint Mode" src="skins/dark/pick.png"/><br/>
   <img id="full_on"    title="Exit Full Screen"      src="skins/dark/full_on.png" style="position:absolute; visibility:hidden;"/>
   <img id="full"       title="Full Screen"           src="skins/dark/full.png"   />
  </div>
+ <div id="pickpoint-ann-box" class="output-box">Annotation Mode<hr/>XYZ picked point<hr/><span id="pickpoint-ann-output" class="output-text" onMouseDown="event.stopPropagation()">[ 0 , 0 , 0 ]</span></div> <!-- CVAST -->
  <div id="pickpoint-box" class="output-box">XYZ picked point<hr/><span id="pickpoint-output" class="output-text" onMouseDown="event.stopPropagation()">[ 0 , 0 , 0 ]</span></div>
  <canvas id="draw-canvas" style="background-image: url(skins/backgrounds/light.jpg)"/>
 </div> 

@@ -87,17 +87,25 @@ function setup3dhopCVAST(source) {
 	});
 	
 
-	//presenter._onEndPickingPoint = onEndPick;
+	presenter._onEndPickingPoint = onEndPick;
 }
 
 function actionsToolbar(action) {
 	if(action=='home') presenter.resetTrackball(); 
 	else if(action=='zoomin') presenter.zoomIn();
 	else if(action=='zoomout') presenter.zoomOut(); 
-	else if(action=='light' || action=='light_on') { presenter.enableLightTrackball(!presenter.isLightTrackballEnabled()); lightSwitch(); } 
-	else if(action=='pick' || action=='pick_on') { presenter.enablePickpointMode(!presenter.isPickpointModeEnabled()); pickpointSwitch(); presenter._onEndPickingPoint = onEndPick; }
-	else if(action=='ann' || action=='ann_on') { presenter.enablePickpointMode(!presenter.isPickpointModeEnabled());presenter.isPickpointModeEnabled(); presenter._onEndPickingPoint = onEndAnnotation; } 
-	else if(action=='full' || action=='full_on') fullscreenSwitch(); 
+	else if(action=='light' || action=='light_on') {
+		presenter.enableLightTrackball(!presenter.isLightTrackballEnabled());
+		lightSwitch();
+	} else if(action=='pick' || action=='pick_on') {
+		presenter.enablePickpointMode(!presenter.isPickpointModeEnabled());
+		pickpointSwitch();
+		presenter._onEndPickingPoint = onEndPick;
+	} else if(action=='ann' || action=='ann_on') { 
+		presenter.enablePickpointMode(!presenter.isPickpointModeEnabled());
+		annotationSwitch();
+		presenter._onEndPickingPoint = onEndAnnotation;
+	} else if(action=='full' || action=='full_on') fullscreenSwitch(); 
 }
 
 
@@ -114,7 +122,7 @@ function onEndAnnotation(point) {
 	var x = point[0].toFixed(2);
 	var y = point[1].toFixed(2);
 	var z = point[2].toFixed(2);
-    $('#pickpoint-output').html("[ "+x+" , "+y+" , "+z+" ]");
+    $('#pickpoint-ann-output').html("[ "+x+" , "+y+" , "+z+" ]");
     
 	// CUSTOM ANNOTATION
 	var annotation = prompt("Insert annotation:", "Your annotation here");
