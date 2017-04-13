@@ -2776,6 +2776,7 @@ setScene : function (options) {
 	}
 
 	// creating the desired trackball
+	console.log(this); // KER
 	this.trackball  = new this._scene.trackball.type();
 	this.trackball.setup(this._scene.trackball.trackOptions);
 

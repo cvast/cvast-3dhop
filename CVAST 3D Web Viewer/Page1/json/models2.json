@@ -1,0 +1,25 @@
+{
+		meshes: {
+			"Decoration" : { url: "models/custom/deco.ply" }
+		},
+		modelInstances : {
+			"Deco" : {
+				mesh : "Decoration"
+			}
+		},
+		trackball: {
+			type : TurntablePanTrackball,
+			trackOptions : {
+				startDistance: 1.3,
+				startPhi: 40.0,
+				startTheta: 20.0,
+				minMaxDist: [0.8, 2.5],
+				minMaxPhi: [-180, 180],
+				minMaxTheta: [-50.0, 70.0]
+			}
+		},
+		space: {
+			centerMode: "scene",
+			radiusMode: "scene"
+		}
+	}
