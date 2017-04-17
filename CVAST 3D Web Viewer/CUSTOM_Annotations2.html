@@ -36,8 +36,8 @@
   <img id="zoomout"    title="Zoom Out"              src="../3DHOP_4.1/minimal/skins/dark/zoomout.png"/><br/>
   <img id="light_on"   title="Disable Light Control" src="../3DHOP_4.1/minimal/skins/dark/light_on.png" style="position:absolute; visibility:hidden;"/>
   <img id="light"      title="Enable Light Control"  src="../3DHOP_4.1/minimal/skins/dark/light.png"/><br/>
-  <img id="ann_on"    title="Disable Annotation Mode" src="skins/CUSTOM/annote_on.png" style="position:absolute; visibility:hidden;"/> <!-- CVAST -->
-  <img id="ann"       title="Enable Annotation Mode" src="skins/CUSTOM/annote.png"/><br/> <!-- CVAST -->
+  <img id="ann_on"    title="Disable Annotation Mode" src="skins/annote_on.png" style="position:absolute; visibility:hidden;"/> <!-- CVAST -->
+  <img id="ann"       title="Enable Annotation Mode" src="skins/annote.png"/><br/> <!-- CVAST -->
   <img id="pick_on"    title="Disable PickPoint Mode"src="../3DHOP_4.1/minimal/skins/dark/pick_on.png" style="position:absolute; visibility:hidden;"/>
   <img id="pick"       title="Enable PickPoint Mode" src="../3DHOP_4.1/minimal/skins/dark/pick.png"/><br/>
   <img id="full_on"    title="Exit Full Screen"      src="../3DHOP_4.1/minimal/skins/dark/full_on.png" style="position:absolute; visibility:hidden;"/>
@@ -54,7 +54,7 @@ $(document).ready(function(){
 	console.log("ready");
 
     /* source of type STRING */
-    var source = "./models/custom/deco.ply"; // The path in which the model to be loaded in the viewer is stored
+    var source = "models/deco.ply"; // The path in which the model to be loaded in the viewer is stored
 
 	//init3dhopCVAST();
 	init3dhop();
