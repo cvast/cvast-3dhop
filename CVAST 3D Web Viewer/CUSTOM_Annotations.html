@@ -4,41 +4,41 @@
 <meta content="charset=UTF-8"/>
 <title>3DHOP - 3D Heritage Online Presenter</title>
 <!--STYLESHEET-->
-<link type="text/css" rel="stylesheet" href="stylesheet/3dhop.css"/>  
+<link type="text/css" rel="stylesheet" href="../3DHOP_4.1/minimal/stylesheet/3dhop.css"/>  
 <!--SPIDERGL-->
-<script type="text/javascript" src="../../3DHOP_4.1/minimal/js/spidergl.js"></script>
+<script type="text/javascript" src="../3DHOP_4.1/minimal/js/spidergl.js"></script>
 <!--JQUERY-->
-<script type="text/javascript" src="../../3DHOP_4.1/minimal/js/jquery.js"></script>
+<script type="text/javascript" src="../3DHOP_4.1/minimal/js/jquery.js"></script>
 <!--PRESENTER-->
-<script type="text/javascript" src="../../3DHOP_4.1/minimal/js/presenter.js"></script>
+<script type="text/javascript" src="../3DHOP_4.1/minimal/js/presenter.js"></script>
 <!--3D MODELS LOADING AND RENDERING-->
-<script type="text/javascript" src="../../3DHOP_4.1/minimal/js/nexus.js"></script>
-<script type="text/javascript" src="../../3DHOP_4.1/minimal/js/ply.js"></script>
+<script type="text/javascript" src="../3DHOP_4.1/minimal/js/nexus.js"></script>
+<script type="text/javascript" src="../3DHOP_4.1/minimal/js/ply.js"></script>
 <!--TRACKBALLS-->
-<script type="text/javascript" src="../../3DHOP_4.1/minimal/js/trackball_sphere.js"></script>
-<script type="text/javascript" src="../../3DHOP_4.1/minimal/js/trackball_turntable.js"></script>
-<script type="text/javascript" src="../../3DHOP_4.1/minimal/js/trackball_turntable_pan.js"></script>
-<script type="text/javascript" src="../../3DHOP_4.1/minimal/js/trackball_pantilt.js"></script>
+<script type="text/javascript" src="../3DHOP_4.1/minimal/js/trackball_sphere.js"></script>
+<script type="text/javascript" src="../3DHOP_4.1/minimal/js/trackball_turntable.js"></script>
+<script type="text/javascript" src="../3DHOP_4.1/minimal/js/trackball_turntable_pan.js"></script>
+<script type="text/javascript" src="../3DHOP_4.1/minimal/js/trackball_pantilt.js"></script>
 <!--UTILITY-->
-<script type="text/javascript" src="../../3DHOP_4.1/minimal/js/init.js"></script>
+<script type="text/javascript" src="../3DHOP_4.1/minimal/js/init.js"></script>
 </head>
 <body>
 <div id="3dhop" class="tdhop" onMouseDown="if (event.preventDefault) event.preventDefault()"><div id="tdhlg"></div>
  <div id="toolbar">
-  <img id="home"       title="Home"                  src="skins/dark/home.png"   /><br/>
-  <img id="zoomin"     title="Zoom In"               src="skins/dark/zoomin.png" /><br/>
-  <img id="zoomout"    title="Zoom Out"              src="skins/dark/zoomout.png"/><br/>
-  <img id="light_on"   title="Disable Light Control" src="skins/dark/light_on.png" style="position:absolute; visibility:hidden;"/>
-  <img id="light"      title="Enable Light Control"  src="skins/dark/light.png"/><br/>
-  <img id="ann_on"    title="Disable Annotation Mode" src="skins/CUSTOM/annote_on.png" style="position:absolute; visibility:hidden;"/>
-  <img id="ann"       title="Enable Annotation Mode" src="skins/CUSTOM/annote.png"/><br/>
-  <img id="pick_on"    title="Disable PickPoint Mode"src="skins/dark/pick_on.png" style="position:absolute; visibility:hidden;"/>
-  <img id="pick"       title="Enable PickPoint Mode" src="skins/dark/pick.png"/><br/>
-  <img id="full_on"    title="Exit Full Screen"      src="skins/dark/full_on.png" style="position:absolute; visibility:hidden;"/>
-  <img id="full"       title="Full Screen"           src="skins/dark/full.png"   />
+  <img id="home"       title="Home"                  src="../3DHOP_4.1/minimal/skins/dark/home.png"   /><br/>
+  <img id="zoomin"     title="Zoom In"               src="../3DHOP_4.1/minimal/skins/dark/zoomin.png" /><br/>
+  <img id="zoomout"    title="Zoom Out"              src="../3DHOP_4.1/minimal/skins/dark/zoomout.png"/><br/>
+  <img id="light_on"   title="Disable Light Control" src="../3DHOP_4.1/minimal/skins/dark/light_on.png" style="position:absolute; visibility:hidden;"/>
+  <img id="light"      title="Enable Light Control"  src="../3DHOP_4.1/minimal/skins/dark/light.png"/><br/>
+  <img id="ann_on"    title="Disable Annotation Mode" src="skins/annote_on.png" style="position:absolute; visibility:hidden;"/>
+  <img id="ann"       title="Enable Annotation Mode" src="skins/annote.png"/><br/>
+  <img id="pick_on"    title="Disable PickPoint Mode"src="../3DHOP_4.1/minimal/skins/dark/pick_on.png" style="position:absolute; visibility:hidden;"/>
+  <img id="pick"       title="Enable PickPoint Mode" src="../3DHOP_4.1/minimal/skins/dark/pick.png"/><br/>
+  <img id="full_on"    title="Exit Full Screen"      src="../3DHOP_4.1/minimal/skins/dark/full_on.png" style="position:absolute; visibility:hidden;"/>
+  <img id="full"       title="Full Screen"           src="../3DHOP_4.1/minimal/skins/dark/full.png"   />
  </div>
  <div id="pickpoint-box" class="output-box">XYZ picked point<hr/><span id="pickpoint-output" class="output-text" onMouseDown="event.stopPropagation()">[ 0 , 0 , 0 ]</span></div>
- <canvas id="draw-canvas" style="background-image: url(skins/backgrounds/light.jpg)"/>
+ <canvas id="draw-canvas" style="background-image: url(../3DHOP_4.1/minimal/skins/backgrounds/light.jpg)"/>
 </div> 
 </body>
 
@@ -50,7 +50,7 @@ function setup3dhop() {
 
 	presenter.setScene({
 		meshes: {
-			"Decoration" : { url: "models/custom/deco.ply" }
+			"Decoration" : { url: "models/deco.ply" }
 		},
 		modelInstances : {
 			"Deco" : {
