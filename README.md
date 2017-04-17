@@ -33,5 +33,5 @@ Minimum system requirements:
 Your model must have PLY or NXS formats. Textures (where apply) must be encoded with a color vertex format.
 
 Change source path:
-    * In CUSTOM_Annotations.html : (line **53**) "Decoration" : { url: "models/deco.ply" }
-    * In CUSTOM_Annotations2.html : (line **55**) var source = "models/deco.ply";
+   * In CUSTOM_Annotations.html : (line **53**) "Decoration" : { url: "models/deco.ply" }
+   * In CUSTOM_Annotations2.html : (line **55**) var source = "models/deco.ply";
