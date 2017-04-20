@@ -10,7 +10,8 @@
 <!--JQUERY-->
 <script type="text/javascript" src="../3DHOP_4.1/minimal/js/jquery.js"></script>
 <!--PRESENTER-->
-<script type="text/javascript" src="./js/presenterCVAST.js"></script> <!-- customized version of presenter.js -->
+<!-- customized version of presenter.js -->
+<script type="text/javascript" src="./js/presenterCVAST.js"></script>
 <!--3D MODELS LOADING AND RENDERING-->
 <script type="text/javascript" src="../3DHOP_4.1/minimal/js/nexus.js"></script>
 <script type="text/javascript" src="../3DHOP_4.1/minimal/js/ply.js"></script>
@@ -20,7 +21,8 @@
 <script type="text/javascript" src="../3DHOP_4.1/minimal/js/trackball_turntable_pan.js"></script>
 <script type="text/javascript" src="../3DHOP_4.1/minimal/js/trackball_pantilt.js"></script>
 <!--UTILITY-->
-<script type="text/javascript" src="./js/initCVAST.js"></script> <!-- customized version of init.js -->
+<!-- customized version of init.js -->
+<script type="text/javascript" src="./js/initCVAST.js"></script>
 
 <!--CVAST-->
 <script type="text/javascript" src="./js/setupCVAST.js"></script>
@@ -53,22 +55,44 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-    /* source of type STRING */
+
+
+    /* source of type STRING - used by setupURL */
     // The path in which the model to be loaded in the viewer is stored
     var sourceURL = "models/deco.ply";
 
-    /* source of type JSON STRING */
+    /* source of type JSON STRING - used by setupJSON */
     // The JSON to be parsed for viewer setup
-    var sourceJSON = '{ "meshes" : { "deco" : { "url" : "models/deco.ply" } }, \
-        "modelInstances" : { "Deco" : { "mesh" : "deco" } }, "trackball" : \
-        { "type" : "SphereTrackball", "trackOptions" : \
-        { "startDistance" : 2.5, "minMaxDist" : [0.5, 3.0] } }, \
-        "space" : { "centerMode" : "scene", "radiusMode" : "scene" } }';
+    var sourceJSON = '\
+        { "meshes" : \
+            { "deco" : \
+                { "url" : "models/deco.ply" } \
+            }, \
+        "modelInstances" : \
+            { "Deco" : \
+                { "mesh" : "deco" } \
+            }, \
+        "trackball" : \
+            { "type" : "SphereTrackball", \
+                "trackOptions" : \
+                    { "startDistance" : 2.5, \
+                    "minMaxDist" : [0.5, 3.0] \
+                    } \
+            }, \
+        "space" : { "centerMode" : "scene", "radiusMode" : "scene" }, \
+        "annotation" : [\
+            { "AnnID" : "ID111", "Ann" : "Annotation 1", "Coord" : { "x" : 1, "y" : 1, "z" : 1 } }, \
+            { "AnnID" : "ID222", "Ann" : "Annotation 2", "Coord" : { "x" : 2, "y" : 2, "z" : 2 } }, \
+            { "AnnID" : "ID333", "Ann" : "Annotation 3", "Coord" : { "x" : 3, "y" : 3, "z" : 3 } } \
+            ]\
+        }';
 
-	//init3dhopCVAST();
+
+	//init3dhopCVAST(); // under construction
 	init3dhop();
 
 
+    // Choose one of the setup function
 	//setupURL(sourceURL);
     setupJSON(sourceJSON);
 

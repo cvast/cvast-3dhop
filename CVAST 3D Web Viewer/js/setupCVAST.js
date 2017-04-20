@@ -1,5 +1,8 @@
 // VIEWER
 var presenter = null;
+    
+// Annotations Array list (default value is empty)
+var ann = [];
 
 function setupURL(source) { 
 	presenter = new Presenter("draw-canvas");
@@ -32,12 +35,15 @@ function setupURL(source) {
 
 function setupJSON(source) { 
 	presenter = new Presenter("draw-canvas");
-	
+
 	// Parse the JSON String into a JSON Object
 	var parsedsource = JSON.parse(source);
 
 	// trackball.type should be a function (a constructor): conversion from string to function
 	parsedsource.trackball.type = eval("(" + parsedsource.trackball.type + ")");
+
+	// change value of ann if annotations are loaded on setup-time
+	ann = parsedsource.annotation;
 
 	presenter.setScene(parsedsource);
 
@@ -87,5 +93,8 @@ function onEndAnnotation(point) {
 	} else {
 		alert("Warning: annotation cannot be empty");
 	}
+
+	// Push the new created annotation in the annotation list
+	ann[ann.length] = { annID : annID, Ann : annotation, Coord : { x : parseFloat(x), y : parseFloat(y), z : parseFloat(z) } };
 	
 }
