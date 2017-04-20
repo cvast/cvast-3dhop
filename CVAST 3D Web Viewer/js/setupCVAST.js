@@ -1,62 +1,13 @@
 // VIEWER
 var presenter = null;
 
-function setup3dhopCVAST(source) { 
+function setupURL(source) { 
 	presenter = new Presenter("draw-canvas");
 	
-	/* // TEST BLOCK OF CODE FOR source OF TYPE JSON
-	// --- source of type JSON
-	// Reading source
-	var modjson = JSON.parse(source);
-	
-	//console.log(modjson.meshes);
-	
-	modarr = JSONtoArray(modjson);
-	
-	//console.log(modarr);
-	
-	var meshesBody = "";
-	var modelInstancesBody = "";
-	
-	for (var i = 0, len = modarr[1].length; i < len/2; i++) {
-		meshesBody = meshesBody.concat("\"" + modarr[1][i*2] + "\" : { url \"" + modarr[1][(i*2)+1][1] + "\"}"); // KER - Only URL currently
-		if ((len > 2) && (i+1 < len/2)) {
-			meshesBody = meshesBody.concat(", ");
-		}
-	}
-	
-	//console.log(meshesBody);
-	
-	function JSONtoArray(obj) {
-		const result = [];
-		for (const prop in obj) {
-			const value = obj[prop];
-			result.push(prop); // KER
-			if (typeof value === 'object') {
-				
-				result.push(JSONtoArray(value));
-			} else {
-				result.push(value);
-			}
-		}
-		return result;
-	}*/
-	
-	/* TEST BLOCK OF CODE - NOT WORKING
-	var test = "\"deco\" : { url: \"source/custom/deco.ply\" }";
-	console.log(test);
-	
-	var sdec = "deco";
-	var surl = "source/custom/deco.ply";
-	
-	var mj = '{ "meshes" : { "deco" : { "url" : "source/custom/deco.ply" } }, "modelInstances" : { "Deco" : { "mesh" : "deco" } }, "trackball" : { "type" : "TurntablePanTrackball", "trackOptions" : { "startDistance" : 1.3, "startPhi" : 0, "startTheta" : 0, "minMaxDist" : [0.8, 2.5], "minMaxPhi" : [0, 180], "minMaxTheta" : [0, 50] } }, "space" : { "centerMode" : "scene", "radiusMode" : "scene" } }';
-	presenter.setScene(JSON.parse(mj));
-	presenter.setScene(JSON.parse(modjson));
-	*/
-
 	presenter.setScene({
 		meshes: {
-			"mesh1" : { url: source } // The path in which the model to be loaded in the viewer is stored
+			// The path in which the model to be loaded in the viewer is stored
+			"mesh1" : { url: source }
 		},
 		modelInstances : {
 			"Inst1" : {
@@ -64,16 +15,6 @@ function setup3dhopCVAST(source) {
 			}
 		},
 		trackball: {
-			/*type : TurntablePanTrackball,
-			trackOptions : {
-				startDistance: 1.3,
-				startPhi: 40.0,
-				startTheta: 20.0,
-				minMaxDist: [0.8, 2.5],
-				minMaxPhi: [-180, 180],
-				minMaxTheta: [-50.0, 70.0]
-			}*/
-
 			type: SphereTrackball,
 			trackOptions : {
 				startDistance : 2.5,
@@ -86,6 +27,19 @@ function setup3dhopCVAST(source) {
 		}
 	});
 	
+	presenter._onEndPickingPoint = onEndPick;
+}
+
+function setupJSON(source) { 
+	presenter = new Presenter("draw-canvas");
+	
+	// Parse the JSON String into a JSON Object
+	var parsedsource = JSON.parse(source);
+
+	// trackball.type should be a function (a constructor): conversion from string to function
+	parsedsource.trackball.type = eval("(" + parsedsource.trackball.type + ")");
+
+	presenter.setScene(parsedsource);
 
 	presenter._onEndPickingPoint = onEndPick;
 }

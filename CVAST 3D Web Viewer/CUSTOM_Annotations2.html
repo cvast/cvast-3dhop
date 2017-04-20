@@ -22,9 +22,7 @@
 <!--UTILITY-->
 <script type="text/javascript" src="./js/initCVAST.js"></script> <!-- customized version of init.js -->
 
-<!--Removable-->
 <!--CVAST-->
-<!-- <script type="text/javascript" src="./js/initCVAST.js"></script> -->
 <script type="text/javascript" src="./js/setupCVAST.js"></script>
 
 </head>
@@ -36,8 +34,12 @@
   <img id="zoomout"    title="Zoom Out"              src="../3DHOP_4.1/minimal/skins/dark/zoomout.png"/><br/>
   <img id="light_on"   title="Disable Light Control" src="../3DHOP_4.1/minimal/skins/dark/light_on.png" style="position:absolute; visibility:hidden;"/>
   <img id="light"      title="Enable Light Control"  src="../3DHOP_4.1/minimal/skins/dark/light.png"/><br/>
-  <img id="ann_on"    title="Disable Annotation Mode" src="skins/annote_on.png" style="position:absolute; visibility:hidden;"/> <!-- CVAST -->
-  <img id="ann"       title="Enable Annotation Mode" src="skins/annote.png"/><br/> <!-- CVAST -->
+
+  <!-- CVAST -->
+  <img id="ann_on"    title="Disable Annotation Mode" src="skins/annote_on.png" style="position:absolute; visibility:hidden;"/>
+  <img id="ann"       title="Enable Annotation Mode" src="skins/annote.png"/><br/>
+  <!--       -->
+
   <img id="pick_on"    title="Disable PickPoint Mode"src="../3DHOP_4.1/minimal/skins/dark/pick_on.png" style="position:absolute; visibility:hidden;"/>
   <img id="pick"       title="Enable PickPoint Mode" src="../3DHOP_4.1/minimal/skins/dark/pick.png"/><br/>
   <img id="full_on"    title="Exit Full Screen"      src="../3DHOP_4.1/minimal/skins/dark/full_on.png" style="position:absolute; visibility:hidden;"/>
@@ -51,17 +53,24 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-	console.log("ready");
-
     /* source of type STRING */
-    var source = "models/deco.ply"; // The path in which the model to be loaded in the viewer is stored
+    // The path in which the model to be loaded in the viewer is stored
+    var sourceURL = "models/deco.ply";
+
+    /* source of type JSON STRING */
+    // The JSON to be parsed for viewer setup
+    var sourceJSON = '{ "meshes" : { "deco" : { "url" : "models/deco.ply" } }, \
+        "modelInstances" : { "Deco" : { "mesh" : "deco" } }, "trackball" : \
+        { "type" : "SphereTrackball", "trackOptions" : \
+        { "startDistance" : 2.5, "minMaxDist" : [0.5, 3.0] } }, \
+        "space" : { "centerMode" : "scene", "radiusMode" : "scene" } }';
 
 	//init3dhopCVAST();
 	init3dhop();
 
-    console.log("Calling setup3dhopCVAST(source)...");
-    console.log(source);
-	setup3dhopCVAST(source);
+
+	//setupURL(sourceURL);
+    setupJSON(sourceJSON);
 
 });
 </script>
