@@ -61,11 +61,16 @@ function actionsToolbar(action) {
 		presenter.enablePickpointMode(!presenter.isPickpointModeEnabled());
 		pickpointSwitch();
 		presenter._onEndPickingPoint = onEndPick;
-	} else if(action=='ann' || action=='ann_on') { 
+	} else if(action=='full' || action=='full_on') fullscreenSwitch(); 
+
+	// --- CVAST ---
+	else if(action=='ann' || action=='ann_on') { 
 		presenter.enablePickpointMode(!presenter.isPickpointModeEnabled());
 		annotationSwitch();
 		presenter._onEndPickingPoint = onEndAnnotation;
-	} else if(action=='full' || action=='full_on') fullscreenSwitch(); 
+	} else if(action=='view_ann' || action=='hide_ann') { 
+		console.log(ann);
+	} 
 }
 
 
