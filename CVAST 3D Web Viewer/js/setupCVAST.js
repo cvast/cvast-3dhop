@@ -4,6 +4,9 @@ var presenter = null;
 // Annotations Array list (default value is empty)
 var _hotspots = [];
 
+// Parsed JSON source, parameter used by setupJSON
+var _sourceJSON = [];
+
 function setupURL(source) { 
 	presenter = new Presenter("draw-canvas");
 	
@@ -37,15 +40,21 @@ function setupJSON(source) {
 	presenter = new Presenter("draw-canvas");
 
 	// Parse the JSON String into a JSON Object
-	var parsedsource = JSON.parse(source);
+	_sourceJSON = JSON.parse(source);
 
 	// trackball.type should be a function (a constructor): conversion from string to function
-	parsedsource.trackball.type = eval("(" + parsedsource.trackball.type + ")");
+	_sourceJSON.trackball.type = eval("(" + _sourceJSON.trackball.type + ")");
+
+	// Add marker mesh to scene (the marker will not be instanciated now)
+	_sourceJSON.meshes.marker = { url : "models/Marker.ply", 
+		transform: { scale : [.025, .025, 0.025] /*, translation : [0.06, -0.19, 0.2]*/ }, };
+	// Add an instance of the marker to the scene
+	// _sourceJSON.modelInstances.Marker = { mesh : "marker" };
 
 	// change value of ann if annotations are loaded on setup-time
-	_hotspots = parsedsource.hotspots;
+	_hotspots = _sourceJSON.hotspots;
 
-	presenter.setScene(parsedsource);
+	presenter.setScene(_sourceJSON);
 
 	presenter._onEndPickingPoint = onEndPick;
 }
@@ -70,6 +79,11 @@ function actionsToolbar(action) {
 		presenter._onEndPickingPoint = onEndAnnotation;
 	} else if(action=='view_ann' || action=='hide_ann') { 
 		console.log(_hotspots);
+		console.log(_sourceJSON);
+		
+		createSpots();
+		console.log(_sourceJSON);
+		presenter.setScene(_sourceJSON);
 	} 
 }
 
@@ -100,7 +114,15 @@ function onEndAnnotation(point) {
 	}
 
 	// Push the new created annotation in the annotation list
-	_hotspots[_hotspots.length] = { ID : Math.random(), Coord : { x : parseFloat(x), y : parseFloat(y), z : parseFloat(z) },
+	_hotspots[_hotspots.length] = { ID : Math.random(), Coordinates : { x : parseFloat(x), y : parseFloat(y), z : parseFloat(z) },
 		Annotations : { ID : annotationID, value : annotation } };
 	
+}
+
+// Add new instances of the marker in the scene
+function createSpots() {
+	for(i = 0; i<_hotspots.length; i++) {
+		_sourceJSON.modelInstances[_hotspots[i].ID] = { mesh : "marker",
+			transform : { translation : [_hotspots[i].Coordinates.x, _hotspots[i].Coordinates.y, _hotspots[i].Coordinates.z] } } ;
+	} 
 }
