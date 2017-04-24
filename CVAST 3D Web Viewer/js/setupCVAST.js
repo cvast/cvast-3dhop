@@ -2,7 +2,7 @@
 var presenter = null;
     
 // Annotations Array list (default value is empty)
-var ann = [];
+var _hotspots = [];
 
 function setupURL(source) { 
 	presenter = new Presenter("draw-canvas");
@@ -43,7 +43,7 @@ function setupJSON(source) {
 	parsedsource.trackball.type = eval("(" + parsedsource.trackball.type + ")");
 
 	// change value of ann if annotations are loaded on setup-time
-	ann = parsedsource.annotation;
+	_hotspots = parsedsource.hotspots;
 
 	presenter.setScene(parsedsource);
 
@@ -69,7 +69,7 @@ function actionsToolbar(action) {
 		annotationSwitch();
 		presenter._onEndPickingPoint = onEndAnnotation;
 	} else if(action=='view_ann' || action=='hide_ann') { 
-		console.log(ann);
+		console.log(_hotspots);
 	} 
 }
 
@@ -91,15 +91,16 @@ function onEndAnnotation(point) {
     
 	// CUSTOM ANNOTATION
 	var annotation = prompt("Insert annotation:", "Your annotation here");
-	var annID = Math.random();
+	var annotationID = Math.random();
 	
 	if (annotation != null) {
-		alert("Annotation ID# "+annID+"\r\nCoords: [ "+x+" , "+y+" , "+z+" ]\r\nAnnotation: "+annotation);
+		alert("Annotation ID# "+annotationID+"\r\nCoords: [ "+x+" , "+y+" , "+z+" ]\r\nAnnotation: "+annotation);
 	} else {
 		alert("Warning: annotation cannot be empty");
 	}
 
 	// Push the new created annotation in the annotation list
-	ann[ann.length] = { annID : annID, Ann : annotation, Coord : { x : parseFloat(x), y : parseFloat(y), z : parseFloat(z) } };
+	_hotspots[_hotspots.length] = { ID : Math.random(), Coord : { x : parseFloat(x), y : parseFloat(y), z : parseFloat(z) },
+		Annotations : { ID : annotationID, value : annotation } };
 	
 }

@@ -64,6 +64,13 @@ $(document).ready(function(){
     var sourceURL = "models/deco.ply";
 
     /* source of type JSON STRING - used by setupJSON */
+    /*
+        meshes: instantiable models
+        modelInstances: the instances of a mesh (multiple instances of a single mesh are possible)
+        spots: interactable instances (you can click on them)
+        trackball: how scene is browsable
+        hotspots: landmarks with comments
+    */
     // The JSON to be parsed for viewer setup
     var sourceJSON = '\
         { "meshes" : \
@@ -74,6 +81,9 @@ $(document).ready(function(){
             { "Deco" : \
                 { "mesh" : "deco" } \
             }, \
+        "spots" : \
+            { \
+            }, \
         "trackball" : \
             { "type" : "SphereTrackball", \
                 "trackOptions" : \
@@ -82,10 +92,19 @@ $(document).ready(function(){
                     } \
             }, \
         "space" : { "centerMode" : "scene", "radiusMode" : "scene" }, \
-        "annotation" : [\
-            { "AnnID" : "ID111", "Ann" : "Annotation 1", "Coord" : { "x" : 1, "y" : 1, "z" : 1 } }, \
-            { "AnnID" : "ID222", "Ann" : "Annotation 2", "Coord" : { "x" : 2, "y" : 2, "z" : 2 } }, \
-            { "AnnID" : "ID333", "Ann" : "Annotation 3", "Coord" : { "x" : 3, "y" : 3, "z" : 3 } } \
+        "hotspots" : [\
+            { "ID" : "ID111", "Coordinates" : { "x" : 1, "y" : 1, "z" : 1 }, "Annotations" : [\
+                { "ID" : "IDA1", "Value" : "Annotation A1" }, \
+                { "ID" : "IDA2", "Value" : "Annotation A2" }, \
+                { "ID" : "IDA3", "Value" : "Annotation A3" } ] }, \
+            { "ID" : "ID222", "Coordinates" : { "x" : 2, "y" : 2, "z" : 2 }, "Annotations" : [\
+                { "ID" : "IDB1", "Value" : "Annotation B1" }, \
+                { "ID" : "IDB2", "Value" : "Annotation B2" }, \
+                { "ID" : "IDB3", "Value" : "Annotation B3" } ] }, \
+            { "ID" : "ID333", "Coordinates" : { "x" : 3, "y" : 3, "z" : 3 }, "Annotations" : [\
+                { "ID" : "IDC1", "Value" : "Annotation C1" }, \
+                { "ID" : "IDC2", "Value" : "Annotation C2" }, \
+                { "ID" : "IDC3", "Value" : "Annotation C3" } ] } \
             ]\
         }';
 
