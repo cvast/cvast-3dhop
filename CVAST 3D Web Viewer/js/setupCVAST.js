@@ -1,9 +1,6 @@
 // VIEWER
 var presenter = null;
     
-// Annotations Array list (default value is empty)
-var _hotspots = [];
-
 // Parsed JSON source, parameter used by setupJSON
 var _sourceJSON = [];
 
@@ -51,9 +48,6 @@ function setupJSON(source) {
 	// Add an instance of the marker to the scene
 	// _sourceJSON.modelInstances.Marker = { mesh : "marker" };
 
-	// change value of ann if annotations are loaded on setup-time
-	_hotspots = _sourceJSON.hotspots;
-
 	presenter.setScene(_sourceJSON);
 
 	presenter._onEndPickingPoint = onEndPick;
@@ -67,23 +61,47 @@ function actionsToolbar(action) {
 		presenter.enableLightTrackball(!presenter.isLightTrackballEnabled());
 		lightSwitch();
 	} else if(action=='pick' || action=='pick_on') {
+		// --- CVAST ---
+		if (presenter._isAnnotatingPickpoint) {
+			presenter.enablePickpointMode(!presenter.isPickpointModeEnabled());
+			annotationSwitch();
+		}
+		// --- end CVAST ---
+
 		presenter.enablePickpointMode(!presenter.isPickpointModeEnabled());
 		pickpointSwitch();
 		presenter._onEndPickingPoint = onEndPick;
 	} else if(action=='full' || action=='full_on') fullscreenSwitch(); 
+	else if(action=='hotspot'|| action=='hotspot_on') { 
+    	presenter.toggleSpotVisibility(HOP_ALL, true);
+		presenter.enableOnHover(!presenter.isOnHoverEnabled());
+    	hotspotSwitch();
+	}
 
 	// --- CVAST ---
-	else if(action=='ann' || action=='ann_on') { 
+	else if(action=='ann' || action=='ann_on') {
+		if (!presenter._isAnnotatingPickpoint && presenter._isMeasuringPickpoint) {
+			presenter.enablePickpointMode(!presenter.isPickpointModeEnabled());
+			pickpointSwitch();
+		}
 		presenter.enablePickpointMode(!presenter.isPickpointModeEnabled());
 		annotationSwitch();
 		presenter._onEndPickingPoint = onEndAnnotation;
 	} else if(action=='view_ann' || action=='hide_ann') { 
-		console.log(_hotspots);
-		console.log(_sourceJSON);
+		if (presenter.isPickpointModeEnabled()){
+			presenter.enablePickpointMode(!presenter.isPickpointModeEnabled());
+			pickpointSwitch();
+			if (presenter._isAnnotatingPickpoint) {
+				annotationSwitch();
+			}
+		}
 		
+		console.log(_sourceJSON);
 		createSpots();
 		console.log(_sourceJSON);
+
 		presenter.setScene(_sourceJSON);
+		presenter.toggleSpotVisibility(HOP_ALL, false);
 	} 
 }
 
@@ -114,15 +132,19 @@ function onEndAnnotation(point) {
 	}
 
 	// Push the new created annotation in the annotation list
-	_hotspots[_hotspots.length] = { ID : Math.random(), Coordinates : { x : parseFloat(x), y : parseFloat(y), z : parseFloat(z) },
+	_sourceJSON.hotspots[_sourceJSON.hotspots.length] = { ID : Math.random(), Coordinates : { x : parseFloat(x), y : parseFloat(y), z : parseFloat(z) },
 		Annotations : { ID : annotationID, value : annotation } };
 	
 }
 
 // Add new instances of the marker in the scene
 function createSpots() {
-	for(i = 0; i<_hotspots.length; i++) {
-		_sourceJSON.modelInstances[_hotspots[i].ID] = { mesh : "marker",
-			transform : { translation : [_hotspots[i].Coordinates.x, _hotspots[i].Coordinates.y, _hotspots[i].Coordinates.z] } } ;
+	for(i = 0; i<_sourceJSON.hotspots.length; i++) {
+		//_sourceJSON.modelInstances[_sourceJSON.hotspots[i].ID] = { mesh : "marker",
+		_sourceJSON.spots[_sourceJSON.hotspots[i].ID] = { mesh : "marker",
+			transform : { translation : [_sourceJSON.hotspots[i].Coordinates.x, 
+				_sourceJSON.hotspots[i].Coordinates.y, _sourceJSON.hotspots[i].Coordinates.z] }, 
+			color : [0, 0.2, 0.5],
+			alpha : 1 } ;
 	} 
 }

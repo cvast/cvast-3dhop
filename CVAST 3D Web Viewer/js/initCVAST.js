@@ -201,8 +201,6 @@ function pickpointSwitch(on) {
     $('#pick_on').css("visibility", "visible");
     $('#pickpoint-box').fadeIn().css("display","table");
     $('#draw-canvas').css("cursor","crosshair");
-
-		
   }
   else{
     if (window.getSelection && window.getSelection()!='') window.getSelection().removeAllRanges();
@@ -212,12 +210,6 @@ function pickpointSwitch(on) {
     $('#pickpoint-box').css("display","none");
     $('#pickpoint-output').html("[ 0 , 0 , 0 ]");
     if (!presenter.isAnyMeasurementEnabled()) $('#draw-canvas').css("cursor","default");
-
-		// presenter._isMeasuringPickpoint cross-handling (it is shared with annotationSwitch())
-		$('#ann_on').css("visibility", "hidden");
-    $('#ann').css("visibility", "visible");
-		$('#pickpoint-ann-box').css("display","none");
-    $('#pickpoint-ann-output').html("[ 0 , 0 , 0 ]");
   }
 }
 
@@ -225,14 +217,14 @@ function annotationSwitch(on) { // CVAST
   if(on === undefined) on = presenter.isPickpointModeEnabled();
 
   if(on){  
+		presenter._isAnnotatingPickpoint = true;
     $('#ann').css("visibility", "hidden");
     $('#ann_on').css("visibility", "visible");
     $('#pickpoint-ann-box').fadeIn().css("display","table");
     $('#draw-canvas').css("cursor","crosshair");
-
-		
   }
   else{
+		presenter._isAnnotatingPickpoint = false;
     if (window.getSelection && window.getSelection()!='') window.getSelection().removeAllRanges();
     else if (document.selection && document.selection.createRange()!='') document.selection.empty();
     $('#ann_on').css("visibility", "hidden");
@@ -240,12 +232,6 @@ function annotationSwitch(on) { // CVAST
     $('#pickpoint-ann-box').css("display","none");
     $('#pickpoint-ann-output').html("[ 0 , 0 , 0 ]");
     if (!presenter.isAnyMeasurementEnabled()) $('#draw-canvas').css("cursor","default");
-
-		// presenter._isMeasuringPickpoint cross-handling (it is shared with pickpointSwitch())
-		$('#pick_on').css("visibility", "hidden");
-    $('#pick').css("visibility", "visible");
-		$('#pickpoint-box').css("display","none");
-    $('#pickpoint-output').html("[ 0 , 0 , 0 ]");
   }
 }
 

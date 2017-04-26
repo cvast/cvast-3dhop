@@ -36,6 +36,8 @@
   <img id="zoomout"    title="Zoom Out"              src="../3DHOP_4.1/minimal/skins/dark/zoomout.png"/><br/>
   <img id="light_on"   title="Disable Light Control" src="../3DHOP_4.1/minimal/skins/dark/light_on.png" style="position:absolute; visibility:hidden;"/>
   <img id="light"      title="Enable Light Control"  src="../3DHOP_4.1/minimal/skins/dark/light.png"/><br/>
+  <img id="hotspot_on" title="Hide Hotspots"         src="../3DHOP_4.1/minimal/skins/dark/pin_on.png" style="position:absolute; visibility:hidden;"/>
+  <img id="hotspot"    title="Show Hotspots"         src="../3DHOP_4.1/minimal/skins/dark/pin.png"    /><br/>
 
   <!-- CVAST -->
   <img id="ann_on"     title="Disable Annotation Mode" src="skins/annote_on.png" style="position:absolute; visibility:hidden;"/>
@@ -82,8 +84,7 @@ $(document).ready(function(){
                 { "mesh" : "deco" } \
             }, \
         "spots" : \
-            { \
-            }, \
+            { }, \
         "trackball" : \
             { "type" : "SphereTrackball", \
                 "trackOptions" : \
@@ -93,15 +94,15 @@ $(document).ready(function(){
             }, \
         "space" : { "centerMode" : "scene", "radiusMode" : "scene" }, \
         "hotspots" : [\
-            { "ID" : "ID111", "Coordinates" : { "x" : 1, "y" : 1, "z" : 1 }, "Annotations" : [\
+            { "ID" : "ID111", "Coordinates" : { "x" : 0.07, "y" : -0.18, "z" : 0.2 }, "Annotations" : [\
                 { "ID" : "IDA1", "Value" : "Annotation A1" }, \
                 { "ID" : "IDA2", "Value" : "Annotation A2" }, \
                 { "ID" : "IDA3", "Value" : "Annotation A3" } ] }, \
-            { "ID" : "ID222", "Coordinates" : { "x" : 2, "y" : 2, "z" : 2 }, "Annotations" : [\
+            { "ID" : "ID222", "Coordinates" : { "x" : -0.14, "y" : 0.01, "z" : 0.19 }, "Annotations" : [\
                 { "ID" : "IDB1", "Value" : "Annotation B1" }, \
                 { "ID" : "IDB2", "Value" : "Annotation B2" }, \
                 { "ID" : "IDB3", "Value" : "Annotation B3" } ] }, \
-            { "ID" : "ID333", "Coordinates" : { "x" : 3, "y" : 3, "z" : 3 }, "Annotations" : [\
+            { "ID" : "ID333", "Coordinates" : { "x" : -0.06, "y" : -0.12, "z" : 0.06 }, "Annotations" : [\
                 { "ID" : "IDC1", "Value" : "Annotation C1" }, \
                 { "ID" : "IDC2", "Value" : "Annotation C2" }, \
                 { "ID" : "IDC3", "Value" : "Annotation C3" } ] } \
