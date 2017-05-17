@@ -148,7 +148,8 @@ function anchorPanels() {
 		$('#pickpoint-box').css('left', ($('#pick').position().left + $('#pick').width() + $('#toolbar').position().left + 5));
 		$('#pickpoint-box').css('top', ($('#pick').position().top + $('#toolbar').position().top));
 	}
-	if ($('#pickpoint-ann-box')[0] && $('#ann')[0]) // CVAST 
+	// CVAST
+	if ($('#pickpoint-ann-box')[0] && $('#ann')[0]) 
 	{
 		$('#pickpoint-ann-box').css('left', ($('#ann').position().left + $('#ann').width() + $('#toolbar').position().left + 5));
 		$('#pickpoint-ann-box').css('top', ($('#ann').position().top + $('#toolbar').position().top));
@@ -213,7 +214,8 @@ function pickpointSwitch(on) {
   }
 }
 
-function annotationSwitch(on) { // CVAST
+// CVAST
+function annotationSwitch(on) {
   if(on === undefined) on = presenter.isPickpointModeEnabled();
 
   if(on){  

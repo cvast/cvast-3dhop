@@ -31,6 +31,8 @@ function setupURL(source) {
 	});
 	
 	presenter._onEndPickingPoint = onEndPick;
+	presenter._onEndPickingPoint = onEndAnnotation;
+	presenter._onPickedSpot = onPickedSpot;
 }
 
 function setupJSON(source) { 
@@ -51,6 +53,8 @@ function setupJSON(source) {
 	presenter.setScene(_sourceJSON);
 
 	presenter._onEndPickingPoint = onEndPick;
+	presenter._onEndPickingPoint = onEndAnnotation;
+	presenter._onPickedSpot = onPickedSpot;
 }
 
 function actionsToolbar(action) {
@@ -86,7 +90,6 @@ function actionsToolbar(action) {
 		}
 		presenter.enablePickpointMode(!presenter.isPickpointModeEnabled());
 		annotationSwitch();
-		presenter._onEndPickingPoint = onEndAnnotation;
 	} else if(action=='view_ann' || action=='hide_ann') { 
 		if (presenter.isPickpointModeEnabled()){
 			presenter.enablePickpointMode(!presenter.isPickpointModeEnabled());
@@ -133,18 +136,35 @@ function onEndAnnotation(point) {
 
 	// Push the new created annotation in the annotation list
 	_sourceJSON.hotspots[_sourceJSON.hotspots.length] = { ID : Math.random(), Coordinates : { x : parseFloat(x), y : parseFloat(y), z : parseFloat(z) },
-		Annotations : { ID : annotationID, value : annotation } };
+		Annotations : [ { ID : annotationID, value : annotation } ] };
 	
 }
 
 // Add new instances of the marker in the scene
 function createSpots() {
 	for(i = 0; i<_sourceJSON.hotspots.length; i++) {
-		//_sourceJSON.modelInstances[_sourceJSON.hotspots[i].ID] = { mesh : "marker",
-		_sourceJSON.spots[_sourceJSON.hotspots[i].ID] = { mesh : "marker",
+		_sourceJSON.spots[i] = { mesh : "marker",
 			transform : { translation : [_sourceJSON.hotspots[i].Coordinates.x, 
 				_sourceJSON.hotspots[i].Coordinates.y, _sourceJSON.hotspots[i].Coordinates.z] }, 
 			color : [0, 0.2, 0.5],
 			alpha : 1 } ;
 	} 
+}
+
+function onPickedSpot(id) {
+	// CUSTOM ANNOTATION
+	var annotation = prompt("Add annotation to this hotspot:", "Your annotation here");
+	var annotationID = Math.random();
+
+	if (annotation != null) {
+		alert("Hotspot ID#: [ " + _sourceJSON.hotspots[id].ID + " ]\r\nAnnotation ID#: [ " + annotationID + " ]\r\nValue: " + annotation);
+	} else {
+		alert("Warning: annotation cannot be empty");
+	}
+
+	// Push the new created annotation in the annotation list
+	_sourceJSON.hotspots[id].Annotations[_sourceJSON.hotspots[id].Annotations.length] =
+		{ ID: annotationID, value: annotation };
+
+	console.log(_sourceJSON.hotspots[id].Annotations[_sourceJSON.hotspots[id].Annotations.length-1]);
 }
