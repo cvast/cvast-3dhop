@@ -98,13 +98,18 @@ function actionsToolbar(action) {
 				annotationSwitch();
 			}
 		}
-		
-		console.log(_sourceJSON);
+
 		createSpots();
+
 		console.log(_sourceJSON);
 
+		trackballPosition = presenter.getTrackballPosition();
 		presenter.setScene(_sourceJSON);
-		presenter.toggleSpotVisibility(HOP_ALL, false);
+		presenter.setTrackballPosition(trackballPosition);
+
+		presenter.toggleSpotVisibility(HOP_ALL, true);
+		presenter.enableOnHover(!presenter.isOnHoverEnabled());
+    	hotspotSwitch();
 	} 
 }
 
@@ -137,7 +142,6 @@ function onEndAnnotation(point) {
 	// Push the new created annotation in the annotation list
 	_sourceJSON.hotspots[_sourceJSON.hotspots.length] = { ID : Math.random(), Coordinates : { x : parseFloat(x), y : parseFloat(y), z : parseFloat(z) },
 		Annotations : [ { ID : annotationID, value : annotation } ] };
-	
 }
 
 // Add new instances of the marker in the scene
@@ -152,8 +156,16 @@ function createSpots() {
 }
 
 function onPickedSpot(id) {
+	// PRINT STORED ANNOTATIONS FOR PICKED SPOT
+	var prevAnnotations = "Previous Annotations:\r\n"
+	for(i = 0; i<_sourceJSON.hotspots[id].Annotations.length; i++) {
+		prevAnnotations = prevAnnotations + 
+			"Annotation ID: " + _sourceJSON.hotspots[id].Annotations[i].ID + "\r\n" +
+			"Value: " + _sourceJSON.hotspots[id].Annotations[i].value + "\r\n";
+	}
+
 	// CUSTOM ANNOTATION
-	var annotation = prompt("Add annotation to this hotspot:", "Your annotation here");
+	var annotation = prompt(prevAnnotations + "\r\nAdd annotation to this hotspot:", "Your annotation here");
 	var annotationID = Math.random();
 
 	if (annotation != null) {
@@ -165,6 +177,4 @@ function onPickedSpot(id) {
 	// Push the new created annotation in the annotation list
 	_sourceJSON.hotspots[id].Annotations[_sourceJSON.hotspots[id].Annotations.length] =
 		{ ID: annotationID, value: annotation };
-
-	console.log(_sourceJSON.hotspots[id].Annotations[_sourceJSON.hotspots[id].Annotations.length-1]);
 }
