@@ -117,7 +117,8 @@ function anchorPanels() {
 		$('#pickpoint-box').css('left', ($('#pick').position().left + $('#pick').width() + $('#toolbar').position().left + 5));
 		$('#pickpoint-box').css('top', ($('#pick').position().top + $('#toolbar').position().top));
 	}
-	if ($('#pickpoint-ann-box')[0] && $('#ann')[0]) // CVAST 
+	// CVAST
+	if ($('#pickpoint-ann-box')[0] && $('#ann')[0]) 
 	{
 		$('#pickpoint-ann-box').css('left', ($('#ann').position().left + $('#ann').width() + $('#toolbar').position().left + 5));
 		$('#pickpoint-ann-box').css('top', ($('#ann').position().top + $('#toolbar').position().top));
@@ -182,16 +183,19 @@ function pickpointSwitch(on) {
   }
 }
 
-function annotationSwitch(on) { // CVAST
+// CVAST
+function annotationSwitch(on) {
   if(on === undefined) on = presenter.isPickpointModeEnabled();
 
   if(on){  
+		presenter._isAnnotatingPickpoint = true;
     $('#ann').css("visibility", "hidden");
     $('#ann_on').css("visibility", "visible");
     $('#pickpoint-ann-box').fadeIn().css("display","table");
     $('#draw-canvas').css("cursor","crosshair");
   }
   else{
+		presenter._isAnnotatingPickpoint = false;
     if (window.getSelection && window.getSelection()!='') window.getSelection().removeAllRanges();
     else if (document.selection && document.selection.createRange()!='') document.selection.empty();
     $('#ann_on').css("visibility", "hidden");

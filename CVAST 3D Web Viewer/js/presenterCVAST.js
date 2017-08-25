@@ -2525,6 +2525,9 @@ onInitialize : function () {
 	this._pickValid = false;
 	this._pickedPoint = [0.0, 0.0, 0.0];
 
+	// --- CVAST ---
+	this._isAnnotatingPickpoint = false;
+
 	// plane section
 	this._clipPoint = [0.0, 0.0, 0.0];
 	this._clipAxis  = [0.0, 0.0, 0.0];
