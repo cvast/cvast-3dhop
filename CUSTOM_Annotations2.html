@@ -1,124 +1,60 @@
 <!DOCTYPE>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head>
-<meta content="charset=UTF-8"/>
-<title>3DHOP - 3D Heritage Online Presenter</title>
-<!--STYLESHEET-->
-<link type="text/css" rel="stylesheet" href="../3DHOP_4.1/minimal/stylesheet/3dhop.css"/>  
-<!--SPIDERGL-->
-<script type="text/javascript" src="../3DHOP_4.1/minimal/js/spidergl.js"></script>
-<!--JQUERY-->
-<script type="text/javascript" src="../3DHOP_4.1/minimal/js/jquery.js"></script>
-<!--PRESENTER-->
-<!-- customized version of presenter.js -->
-<script type="text/javascript" src="./js/presenterCVAST.js"></script>
-<!--3D MODELS LOADING AND RENDERING-->
-<script type="text/javascript" src="../3DHOP_4.1/minimal/js/nexus.js"></script>
-<script type="text/javascript" src="../3DHOP_4.1/minimal/js/ply.js"></script>
-<!--TRACKBALLS-->
-<script type="text/javascript" src="../3DHOP_4.1/minimal/js/trackball_sphere.js"></script>
-<script type="text/javascript" src="../3DHOP_4.1/minimal/js/trackball_turntable.js"></script>
-<script type="text/javascript" src="../3DHOP_4.1/minimal/js/trackball_turntable_pan.js"></script>
-<script type="text/javascript" src="../3DHOP_4.1/minimal/js/trackball_pantilt.js"></script>
-<!--UTILITY-->
-<!-- customized version of init.js -->
-<script type="text/javascript" src="./js/initCVAST.js"></script>
 
-<!--CVAST-->
-<script type="text/javascript" src="./js/setupCVAST.js"></script>
+<head>
+	<meta content="charset=UTF-8" />
+	<title>3DHOP - 3D Heritage Online Presenter</title>
+	<!--STYLESHEET-->
+	<link type="text/css" rel="stylesheet" href="node_modules/3d-hop/minimal/stylesheet/3dhop.css" />
+	<!--REQUIREJS-->
+	<script data-main="example2.js" src="node_modules/requirejs/require.js"></script>
+
+	<script>
+
+	</script>
 
 </head>
+
 <body>
-<div id="3dhop" class="tdhop" onMouseDown="if (event.preventDefault) event.preventDefault()"><div id="tdhlg"></div>
- <div id="toolbar">
-  <img id="home"       title="Home"                  src="../3DHOP_4.1/minimal/skins/dark/home.png"   /><br/>
-  <img id="zoomin"     title="Zoom In"               src="../3DHOP_4.1/minimal/skins/dark/zoomin.png" /><br/>
-  <img id="zoomout"    title="Zoom Out"              src="../3DHOP_4.1/minimal/skins/dark/zoomout.png"/><br/>
-  <img id="light_on"   title="Disable Light Control" src="../3DHOP_4.1/minimal/skins/dark/light_on.png" style="position:absolute; visibility:hidden;"/>
-  <img id="light"      title="Enable Light Control"  src="../3DHOP_4.1/minimal/skins/dark/light.png"/><br/>
-  <img id="hotspot_on" title="Hide Hotspots"         src="../3DHOP_4.1/minimal/skins/dark/pin_on.png" style="position:absolute; visibility:hidden;"/>
-  <img id="hotspot"    title="Show Hotspots"         src="../3DHOP_4.1/minimal/skins/dark/pin.png"    /><br/>
+	<div id="3dhop" class="tdhop" onMouseDown="if (event.preventDefault) event.preventDefault()">
+		<div id="tdhlg"></div>
+		<div id="toolbar">
+			<img id="home" title="Home" src="node_modules/3d-hop/minimal/skins/dark/home.png" /><br/>
+			<img id="zoomin" title="Zoom In" src="node_modules/3d-hop/minimal/skins/dark/zoomin.png" /><br/>
+			<img id="zoomout" title="Zoom Out" src="node_modules/3d-hop/minimal/skins/dark/zoomout.png" /><br/>
+			<img id="light_on" title="Disable Light Control" src="node_modules/3d-hop/minimal/skins/dark/light_on.png" style="position:absolute; visibility:hidden;"
+			/>
+			<img id="light" title="Enable Light Control" src="node_modules/3d-hop/minimal/skins/dark/light.png" /><br/>
+			<img id="hotspot_on" title="Hide Hotspots" src="node_modules/3d-hop/minimal/skins/dark/pin_on.png" style="position:absolute; visibility:hidden;"
+			/>
+			<img id="hotspot" title="Show Hotspots" src="node_modules/3d-hop/minimal/skins/dark/pin.png" /><br/>
 
-  <!-- CVAST -->
-  <img id="ann_on"     title="Disable Annotation Mode" src="skins/annote_on.png" style="position:absolute; visibility:hidden;"/>
-  <img id="ann"        title="Enable Annotation Mode" src="skins/annote.png"/><br/>
-  <img id="hide_ann"   title="Hide Annotations"      src="skins/hideAnnotation.png" style="position:absolute; visibility:hidden;"/>
-  <img id="view_ann"   title="View Annotations"      src="skins/viewAnnotation.png"/><br/>
-  <!--       -->
+			<!-- CVAST -->
+			<img id="ann_on" title="Disable Annotation Mode" src="skins/annote_on.png" style="position:absolute; visibility:hidden;" />
+			<img id="ann" title="Enable Annotation Mode" src="skins/annote.png" /><br/>
+			<img id="hide_ann" title="Hide Annotations" src="skins/hideAnnotation.png" style="position:absolute; visibility:hidden;" />
+			<img id="view_ann" title="View Annotations" src="skins/viewAnnotation.png" /><br/>
+			<!--       -->
 
-  <img id="pick_on"    title="Disable PickPoint Mode"src="../3DHOP_4.1/minimal/skins/dark/pick_on.png" style="position:absolute; visibility:hidden;"/>
-  <img id="pick"       title="Enable PickPoint Mode" src="../3DHOP_4.1/minimal/skins/dark/pick.png"/><br/>
-  <img id="full_on"    title="Exit Full Screen"      src="../3DHOP_4.1/minimal/skins/dark/full_on.png" style="position:absolute; visibility:hidden;"/>
-  <img id="full"       title="Full Screen"           src="../3DHOP_4.1/minimal/skins/dark/full.png"   />
- </div>
- <div id="pickpoint-ann-box" class="output-box">Annotation Mode<hr/>XYZ picked point<hr/><span id="pickpoint-ann-output" class="output-text" onMouseDown="event.stopPropagation()">[ 0 , 0 , 0 ]</span></div> <!-- CVAST -->
- <div id="pickpoint-box" class="output-box">XYZ picked point<hr/><span id="pickpoint-output" class="output-text" onMouseDown="event.stopPropagation()">[ 0 , 0 , 0 ]</span></div>
- <canvas id="draw-canvas" style="background-image: url(../3DHOP_4.1/minimal/skins/backgrounds/light.jpg)"/>
-</div> 
+			<img id="pick_on" title="Disable PickPoint Mode" src="node_modules/3d-hop/minimal/skins/dark/pick_on.png" style="position:absolute; visibility:hidden;"	/>
+			<img id="pick" title="Enable PickPoint Mode" src="node_modules/3d-hop/minimal/skins/dark/pick.png" /><br/>
+			<img id="full_on" title="Exit Full Screen" src="node_modules/3d-hop/minimal/skins/dark/full_on.png" style="position:absolute; visibility:hidden;" />
+			<img id="full" title="Full Screen" src="node_modules/3d-hop/minimal/skins/dark/full.png" />
+		</div>
+
+		<!-- CVAST -->
+		<div id="pickpoint-ann-box" class="output-box">Annotation Mode
+			<hr/>XYZ picked point
+			<hr/><span id="pickpoint-ann-output" class="output-text" onMouseDown="event.stopPropagation()">[ 0 , 0 , 0 ]</span>
+		</div>
+		<!-- -->
+
+		<div id="pickpoint-box" class="output-box">XYZ picked point
+			<hr/><span id="pickpoint-output" class="output-text" onMouseDown="event.stopPropagation()">[ 0 , 0 , 0 ]</span>
+		</div>
+
+		<canvas id="draw-canvas" style="background-image: url(node_modules/3d-hop/minimal/skins/backgrounds/light.jpg)" />
+	</div>
 </body>
-
-<script type="text/javascript">
-$(document).ready(function(){
-
-
-    /* source of type STRING - used by setupURL */
-    // The path in which the model to be loaded in the viewer is stored
-    var sourceURL = "models/deco.ply";
-
-    /* source of type JSON STRING - used by setupJSON */
-    /*
-        meshes: instantiable models
-        modelInstances: the instances of a mesh (multiple instances of a single mesh are possible)
-        spots: interactable instances (you can click on them)
-        trackball: how scene is browsable
-        hotspots: landmarks with comments
-    */
-    // The JSON to be parsed for viewer setup
-    var sourceJSON = '\
-        { "meshes" : \
-            { "deco" : \
-                { "url" : "models/deco.ply" } \
-            }, \
-        "modelInstances" : \
-            { "Deco" : \
-                { "mesh" : "deco" } \
-            }, \
-        "spots" : \
-            { }, \
-        "trackball" : \
-            { "type" : "SphereTrackball", \
-                "trackOptions" : \
-                    { "startDistance" : 2.5, \
-                    "minMaxDist" : [0.5, 3.0] \
-                    } \
-            }, \
-        "space" : { "centerMode" : "scene", "radiusMode" : "scene" }, \
-        "hotspots" : [\
-            { "ID" : "ID111", "Coordinates" : { "x" : -0.12, "y" : 0.2, "z" : 0.08 }, "Annotations" : [\
-                { "ID" : "IDA1", "Value" : "Annotation A1" }, \
-                { "ID" : "IDA2", "Value" : "Annotation A2" }, \
-                { "ID" : "IDA3", "Value" : "Annotation A3" } ] }, \
-            { "ID" : "ID222", "Coordinates" : { "x" : 0.18, "y" : 0.19, "z" : 0.1 }, "Annotations" : [\
-                { "ID" : "IDB1", "Value" : "Annotation B1" }, \
-                { "ID" : "IDB2", "Value" : "Annotation B2" }, \
-                { "ID" : "IDB3", "Value" : "Annotation B3" } ] }, \
-            { "ID" : "ID333", "Coordinates" : { "x" : 0.12, "y" : 0.04, "z" : 0.11 }, "Annotations" : [\
-                { "ID" : "IDC1", "Value" : "Annotation C1" }, \
-                { "ID" : "IDC2", "Value" : "Annotation C2" }, \
-                { "ID" : "IDC3", "Value" : "Annotation C3" } ] } \
-            ]\
-        }';
-
-
-	//init3dhopCVAST(); // under construction
-	init3dhop();
-
-
-    // Choose one of the setup function
-	//setupURL(sourceURL);
-    setupJSON(sourceJSON);
-
-});
-</script>
 
 </html>
