@@ -1,0 +1,31 @@
+{
+  "name": "cvast-3dhop",
+  "version": "1.0.0",
+  "description": "CVAST implementation of 3D HOP",
+  "main": "CVAST_customizations/lib/initCVAST.js",
+  "dependencies": {
+    "napa": "^3.0.0",
+    "requirejs": "^2.3.5"
+  },
+  "devDependencies": {
+    "amdclean": "^2.7.0"
+  },
+  "scripts": {
+    "install": "napa cnr-isti-vclab/3DHOP#573e03058163ab51d3d32f02415b37567b6a0649:3d-hop",
+    "test": "echo \"Error: no test specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cvast/cvast-3dhop.git"
+  },
+  "keywords": [
+    "3D",
+    "viewer"
+  ],
+  "author": "CVAST",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/cvast/cvast-3dhop/issues"
+  },
+  "homepage": "https://github.com/cvast/cvast-3dhop#readme"
+}
