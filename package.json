@@ -2,7 +2,7 @@
   "name": "cvast-3dhop",
   "version": "1.0.0",
   "description": "CVAST implementation of 3D HOP",
-  "main": "lib/cvast-3dhop.js",
+  "main": "main.js",
   "dependencies": {
     "napa": "^3.0.0",
     "requirejs": "^2.3.5"
