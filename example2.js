@@ -1,5 +1,5 @@
 define([
-    'lib/cvast-3dhop'
+    'main'
 ], function (cvast_3dhop) {
 
     var filepath = "https://s3.amazonaws.com/test-cvast-arches-storage/uploadedfiles/485k_perpixel.nxs";
