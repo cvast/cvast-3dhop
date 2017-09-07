@@ -1,0 +1,24 @@
+{
+  "name": "cvast-3dhop",
+  "description": "CVAST implementation of 3D HOP",
+  "main": "main.js",
+  "authors": [
+    "CVAST"
+  ],
+  "license": "GPL-3.0",
+  "keywords": [
+    "3D",
+    "viewer"
+  ],
+  "homepage": "https://github.com/cvast/cvast-3dhop",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "three-d-hop": "https://github.com/cnr-isti-vclab/3DHOP.git#573e03058163ab51d3d32f02415b37567b6a0649"
+  }
+}
