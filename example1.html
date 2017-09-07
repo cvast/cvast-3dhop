@@ -5,9 +5,9 @@
 	<meta content="charset=UTF-8" />
 	<title>3DHOP - 3D Heritage Online Presenter</title>
 	<!--STYLESHEET-->
-	<link type="text/css" rel="stylesheet" href="node_modules/3d-hop/minimal/stylesheet/3dhop.css" />
+	<link type="text/css" rel="stylesheet" href="bower_components/3d-hop/minimal/stylesheet/3dhop.css" />
 	<!--REQUIREJS-->
-	<script data-main="example1.js" src="node_modules/requirejs/require.js"></script>
+	<script data-main="example1.js" src="bower_components/requirejs/require.js"></script>
 
 	<script>
 
@@ -19,15 +19,15 @@
 	<div id="3dhop" class="tdhop" onMouseDown="if (event.preventDefault) event.preventDefault()">
 		<div id="tdhlg"></div>
 		<div id="toolbar">
-			<img id="home" title="Home" src="node_modules/3d-hop/minimal/skins/dark/home.png" /><br/>
-			<img id="zoomin" title="Zoom In" src="node_modules/3d-hop/minimal/skins/dark/zoomin.png" /><br/>
-			<img id="zoomout" title="Zoom Out" src="node_modules/3d-hop/minimal/skins/dark/zoomout.png" /><br/>
-			<img id="light_on" title="Disable Light Control" src="node_modules/3d-hop/minimal/skins/dark/light_on.png" style="position:absolute; visibility:hidden;"
+			<img id="home" title="Home" src="bower_components/3d-hop/minimal/skins/dark/home.png" /><br/>
+			<img id="zoomin" title="Zoom In" src="bower_components/3d-hop/minimal/skins/dark/zoomin.png" /><br/>
+			<img id="zoomout" title="Zoom Out" src="bower_components/3d-hop/minimal/skins/dark/zoomout.png" /><br/>
+			<img id="light_on" title="Disable Light Control" src="bower_components/3d-hop/minimal/skins/dark/light_on.png" style="position:absolute; visibility:hidden;"
 			/>
-			<img id="light" title="Enable Light Control" src="node_modules/3d-hop/minimal/skins/dark/light.png" /><br/>
-			<img id="hotspot_on" title="Hide Hotspots" src="node_modules/3d-hop/minimal/skins/dark/pin_on.png" style="position:absolute; visibility:hidden;"
+			<img id="light" title="Enable Light Control" src="bower_components/3d-hop/minimal/skins/dark/light.png" /><br/>
+			<img id="hotspot_on" title="Hide Hotspots" src="bower_components/3d-hop/minimal/skins/dark/pin_on.png" style="position:absolute; visibility:hidden;"
 			/>
-			<img id="hotspot" title="Show Hotspots" src="node_modules/3d-hop/minimal/skins/dark/pin.png" /><br/>
+			<img id="hotspot" title="Show Hotspots" src="bower_components/3d-hop/minimal/skins/dark/pin.png" /><br/>
 
 			<!-- CVAST -->
 			<img id="ann_on" title="Disable Annotation Mode" src="skins/annote_on.png" style="position:absolute; visibility:hidden;" />
@@ -36,10 +36,10 @@
 			<img id="view_ann" title="View Annotations" src="skins/viewAnnotation.png" /><br/>
 			<!--       -->
 
-			<img id="pick_on" title="Disable PickPoint Mode" src="node_modules/3d-hop/minimal/skins/dark/pick_on.png" style="position:absolute; visibility:hidden;"	/>
-			<img id="pick" title="Enable PickPoint Mode" src="node_modules/3d-hop/minimal/skins/dark/pick.png" /><br/>
-			<img id="full_on" title="Exit Full Screen" src="node_modules/3d-hop/minimal/skins/dark/full_on.png" style="position:absolute; visibility:hidden;" />
-			<img id="full" title="Full Screen" src="node_modules/3d-hop/minimal/skins/dark/full.png" />
+			<img id="pick_on" title="Disable PickPoint Mode" src="bower_components/3d-hop/minimal/skins/dark/pick_on.png" style="position:absolute; visibility:hidden;"	/>
+			<img id="pick" title="Enable PickPoint Mode" src="bower_components/3d-hop/minimal/skins/dark/pick.png" /><br/>
+			<img id="full_on" title="Exit Full Screen" src="bower_components/3d-hop/minimal/skins/dark/full_on.png" style="position:absolute; visibility:hidden;" />
+			<img id="full" title="Full Screen" src="bower_components/3d-hop/minimal/skins/dark/full.png" />
 		</div>
 
 		<!-- CVAST -->
@@ -53,7 +53,7 @@
 			<hr/><span id="pickpoint-output" class="output-text" onMouseDown="event.stopPropagation()">[ 0 , 0 , 0 ]</span>
 		</div>
 
-		<canvas id="draw-canvas" style="background-image: url(node_modules/3d-hop/minimal/skins/backgrounds/light.jpg)" />
+		<canvas id="draw-canvas" style="background-image: url(bower_components/3d-hop/minimal/skins/backgrounds/light.jpg)" />
 	</div>
 </body>
 

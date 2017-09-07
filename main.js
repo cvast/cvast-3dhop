@@ -4,16 +4,16 @@ _sourceJSON = [];
 require.config({
     baseUrl: "./lib",
     paths: {
-        'spidergl': '../node_modules/3d-hop/minimal/js/spidergl',
-        'jquery': '../node_modules/3d-hop/minimal/js/jquery',
-        'nexus': '../node_modules/3d-hop/minimal/js/nexus',
-        'presenter-3dhop': '../node_modules/3d-hop/minimal/js/presenter',
-        'ply': '../node_modules/3d-hop/minimal/js/ply',
-        'trackball-sphere': '../node_modules/3d-hop/minimal/js/trackball_sphere',
-        'trackball-turntable': '../node_modules/3d-hop/minimal/js/trackball_turntable',
-        'trackball-turntable-pan': '../node_modules/3d-hop/minimal/js/trackball_turntable_pan',
-        'trackball-pantilt': '../node_modules/3d-hop/minimal/js/trackball_pantilt',
-        'init-3dhop': '../node_modules/3d-hop/minimal/js/init',
+        'spidergl': '../bower_components/3d-hop/minimal/js/spidergl',
+        'jquery': '../bower_components/3d-hop/minimal/js/jquery',
+        'nexus': '../bower_components/3d-hop/minimal/js/nexus',
+        'presenter-3dhop': '../bower_components/3d-hop/minimal/js/presenter',
+        'ply': '../bower_components/3d-hop/minimal/js/ply',
+        'trackball-sphere': '../bower_components/3d-hop/minimal/js/trackball_sphere',
+        'trackball-turntable': '../bower_components/3d-hop/minimal/js/trackball_turntable',
+        'trackball-turntable-pan': '../bower_components/3d-hop/minimal/js/trackball_turntable_pan',
+        'trackball-pantilt': '../bower_components/3d-hop/minimal/js/trackball_pantilt',
+        'init-3dhop': '../bower_components/3d-hop/minimal/js/init',
     },
     shim: {
         'spidergl': {
