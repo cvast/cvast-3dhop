@@ -1,5 +1,8 @@
 require.config({
     paths: {
+        'presenter-cvast': 'lib/presenter-cvast',
+        'init-cvast': 'lib/init-cvast',
+        'actions-toolbar': 'lib/actions-toolbar',
         'spidergl': 'bower_components/3d-hop/minimal/js/spidergl',
         'jquery': 'bower_components/3d-hop/minimal/js/jquery',
         'nexus': 'bower_components/3d-hop/minimal/js/nexus',
