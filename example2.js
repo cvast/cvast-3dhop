@@ -1,3 +1,18 @@
+require.config({
+    paths: {
+        'spidergl': 'bower_components/3d-hop/minimal/js/spidergl',
+        'jquery': 'bower_components/3d-hop/minimal/js/jquery',
+        'nexus': 'bower_components/3d-hop/minimal/js/nexus',
+        'presenter-3dhop': 'bower_components/3d-hop/minimal/js/presenter',
+        'ply': 'bower_components/3d-hop/minimal/js/ply',
+        'trackball-sphere': 'bower_components/3d-hop/minimal/js/trackball_sphere',
+        'trackball-turntable': 'bower_components/3d-hop/minimal/js/trackball_turntable',
+        'trackball-turntable-pan': 'bower_components/3d-hop/minimal/js/trackball_turntable_pan',
+        'trackball-pantilt': 'bower_components/3d-hop/minimal/js/trackball_pantilt',
+        'init-3dhop': 'bower_components/3d-hop/minimal/js/init'
+    }
+});
+
 define([
     'lib/main'
 ], function (cvast_3dhop) {
@@ -24,7 +39,7 @@ define([
                 "minMaxDist": [0.5, 3.0]
             }
         },
-        "space": { 
+        "space": {
             "centerMode": "scene",
             "radiusMode": "scene"
         },
@@ -33,7 +48,7 @@ define([
                 "ID": "ID111",
                 "Coordinates": {
                     "x": -0.12, "y": 0.2, "z": 0.08
-                }, 
+                },
                 "Annotations": [
                     { "ID": "IDA1", "Value": "Annotation A1" },
                     { "ID": "IDA2", "Value": "Annotation A2" },
@@ -55,7 +70,7 @@ define([
                 "ID": "ID333",
                 "Coordinates": {
                     "x": 0.12, "y": 0.04, "z": 0.11
-                }, 
+                },
                 "Annotations": [
                     { "ID": "IDC1", "Value": "Annotation C1" },
                     { "ID": "IDC2", "Value": "Annotation C2" },
